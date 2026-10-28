@@ -8,56 +8,49 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Cocoa — the dark chocolate brown of the cake boards and ganache
-        // in her photos (#3a2414 in the Facebook banner). Text + dark sections.
+        // Chocolate — the cake boards and ganache in her photos
+        // (#3a2414 in the Facebook banner). Text, outlines, dark sections.
         cocoa: {
           DEFAULT: '#3A2414',
-          900: '#24160C',
-          800: '#2F1D10',
-          700: '#4A2F1C',
-          600: '#6B4A33',
-          400: '#9A8566', // the warm taupe from the profile photo
+          900: '#26170C',
+          700: '#553621',
+          400: '#8C6B55',
         },
-        // Buttercream — page background, from the cream boxes and icing
+        // Cream — iced sponge and the white cake boxes
         cream: {
-          DEFAULT: '#FBF5EA',
-          50: '#FFFDF8',
-          200: '#F4E9D6',
-          300: '#E9DAC0', // close to #d2c6b8 in the banner, lifted
+          DEFAULT: '#FFF5E6',
+          50: '#FFFBF4',
+          200: '#F7E8D2',
         },
-        // Rose — the blush pink of her cupcake boxes and the new-baby cake
-        rose: {
-          DEFAULT: '#E98A9E',
-          light: '#F8D3D4',
-          pale: '#FCEBE8',
-          dark: '#B4445D', // pink text on cream (passes AA)
+        // Strawberry — her pink cupcake boxes and the new-baby cake, turned up
+        berry: {
+          DEFAULT: '#EE7A98',
+          light: '#FFD3DE',
+          pale: '#FFE9EE',
+          dark: '#C1446A', // pink text on cream
         },
-        // Gold — sugar hearts and cheese yellow (#d6ab34 in the profile photo)
-        gold: {
-          DEFAULT: '#D6AB34',
-          light: '#F0D27A',
-          dark: '#A9831A',
+        // Buttercup — the cheese cake, the DeWalt yellow and her sugar hearts
+        butter: {
+          DEFAULT: '#FFCB45',
+          light: '#FFE59A',
         },
-        muted: '#6B5444', // body copy on cream
+        // Pistachio — the piped grass on the golf cupcakes (small accents only)
+        pistachio: '#9FD08A',
+        muted: '#6E5444', // body copy on cream
       },
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
-        sans: ['"Nunito Sans"', 'system-ui', 'sans-serif'],
+        display: ['Shrikhand', 'Georgia', 'serif'],
+        sans: ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+        hand: ['"Gochi Hand"', 'cursive'], // little handwritten notes only
       },
       maxWidth: {
-        site: '1200px',
+        site: '1240px',
       },
       boxShadow: {
-        card: '0 1px 0 #fff inset, 0 24px 50px -28px rgba(58,36,20,.45)',
-        lift: '0 30px 60px -30px rgba(58,36,20,.55)',
-        btn: '0 4px 0 #24160C',
-        'btn-rose': '0 4px 0 #B4445D',
-      },
-      keyframes: {
-        marquee: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },
-      },
-      animation: {
-        marquee: 'marquee 38s linear infinite',
+        sticker: '0 0 0 3px #3A2414, 7px 8px 0 #3A2414',
+        'sticker-sm': '0 0 0 2.5px #3A2414, 4px 5px 0 #3A2414',
+        btn: '0 5px 0 #26170C',
+        'btn-cream': '0 5px 0 #3A2414',
       },
     },
   },

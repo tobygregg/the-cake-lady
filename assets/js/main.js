@@ -1,11 +1,12 @@
 /* ============================================================
    The Cake Lady Guernsey — site behaviour
-   Sections: header · mobile menu · reveals · hero photo card
-             services explorer · gallery filter + lightbox
-             quote form · mobile call bar
+   Sections: header · mobile menu · reveals · hero (sprinkles,
+             parallax) · menu + cake stand · polaroid deck
+             lightbox · quote form · mobile call bar
    ============================================================ */
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
@@ -13,111 +14,124 @@
   const year = $('#year');
   if (year) year.textContent = new Date().getFullYear();
 
-  /* ---------- Header: goes solid once you scroll ---------- */
+  /* ---------- Header: goes solid once you scroll past the hero top ---------- */
   const header = $('#site-header');
   const onScrollHeader = () => {
-    const solid = window.scrollY > 24;
-    header.classList.toggle('bg-cream/90', solid);
+    const solid = window.scrollY > 40;
+    header.classList.toggle('bg-cream/95', solid);
     header.classList.toggle('backdrop-blur-md', solid);
-    header.classList.toggle('shadow-[0_10px_30px_-20px_rgba(58,36,20,.5)]', solid);
+    header.classList.toggle('shadow-[0_3px_0_#3A2414]', solid);
   };
   onScrollHeader();
   window.addEventListener('scroll', onScrollHeader, { passive: true });
 
   /* ---------- Mobile menu ---------- */
   const menuBtn = $('#menu-btn');
-  const menu = $('#mobile-menu');
+  const mobileMenu = $('#mobile-menu');
   const setMenu = (open) => {
-    menu.classList.toggle('is-open', open);
-    menu.setAttribute('aria-hidden', String(!open));
+    mobileMenu.classList.toggle('is-open', open);
+    mobileMenu.setAttribute('aria-hidden', String(!open));
     menuBtn.setAttribute('aria-expanded', String(open));
     menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     $('#mb-top').style.transform = open ? 'translateY(3.5px) rotate(45deg)' : '';
     $('#mb-bot').style.transform = open ? 'translateY(-3.5px) rotate(-45deg)' : '';
     document.body.style.overflow = open ? 'hidden' : '';
-    if (open) header.classList.add('bg-cream');
-    else header.classList.remove('bg-cream');
   };
-  menuBtn.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
-  $$('a', menu).forEach((a) => a.addEventListener('click', () => setMenu(false)));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false); });
-  window.addEventListener('resize', () => { if (window.innerWidth >= 1024 && menu.classList.contains('is-open')) setMenu(false); });
+  menuBtn.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('is-open')));
+  $$('a', mobileMenu).forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) setMenu(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth >= 1024 && mobileMenu.classList.contains('is-open')) setMenu(false); });
 
-  /* ---------- Reveal on scroll (+ piped underlines, drips) ---------- */
-  const revealEls = $$('.reveal, .drip-edge');
+  /* ---------- Reveal on scroll ---------- */
+  const revealEls = $$('.reveal, .pop:not(.is-in), .drip-edge');
   if ('IntersectionObserver' in window && !reduceMotion) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
         if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
     revealEls.forEach((el) => io.observe(el));
   } else {
     revealEls.forEach((el) => el.classList.add('is-in'));
   }
 
-  /* ---------- Hero photo card: gently cycles three cakes ---------- */
-  const heroImgs = $$('.hero-photo img');
-  const heroCap = $('#hero-photo-cap');
-  if (heroImgs.length > 1 && !reduceMotion) {
-    let i = 0;
-    setInterval(() => {
-      if (document.hidden) return;
-      heroImgs[i].classList.remove('is-on');
-      i = (i + 1) % heroImgs.length;
-      heroImgs[i].classList.add('is-on');
-      heroCap.innerHTML = heroImgs[i].dataset.cap;
-    }, 4200);
+  /* ---------- Hero: falling sprinkles ---------- */
+  const hero = $('#top');
+  const sprinkleBox = $('#sprinkles');
+  if (sprinkleBox && !reduceMotion) {
+    const colours = ['#FFF5E6', '#FFCB45', '#9FD08A', '#3A2414', '#FFD3DE'];
+    const count = window.innerWidth < 640 ? 16 : 30;
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement('span');
+      s.className = 'sprinkle';
+      s.style.left = `${Math.random() * 100}%`;
+      s.style.background = colours[i % colours.length];
+      s.style.setProperty('--sr', `${Math.round(Math.random() * 180)}deg`);
+      s.style.setProperty('--fall', `${hero.offsetHeight + 60}px`);
+      s.style.animationDuration = `${7 + Math.random() * 7}s`;
+      s.style.animationDelay = `${-Math.random() * 14}s`;
+      sprinkleBox.appendChild(s);
+    }
   }
 
-  /* ---------- Services explorer (ARIA tabs) ---------- */
-  const tabs = $$('[role="tab"]');
-  const selectTab = (tab, focus = false) => {
-    tabs.forEach((t) => {
-      const on = t === tab;
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex = on ? 0 : -1;
-      const panel = document.getElementById(t.getAttribute('aria-controls'));
-      panel.hidden = !on;
-      panel.classList.toggle('is-showing', on);
+  /* ---------- Hero: stickers drift with the mouse ---------- */
+  const par = $$('.js-par');
+  if (finePointer && !reduceMotion && par.length) {
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+    const tick = () => {
+      cx += (tx - cx) * 0.08;
+      cy += (ty - cy) * 0.08;
+      par.forEach((el) => {
+        const d = +el.dataset.depth;
+        el.style.translate = `${cx * d}px ${cy * d}px`;
+      });
+      raf = Math.abs(tx - cx) + Math.abs(ty - cy) > 0.001 ? requestAnimationFrame(tick) : 0;
+    };
+    hero.addEventListener('pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
+      tx = (e.clientX - r.left) / r.width - 0.5;
+      ty = (e.clientY - r.top) / r.height - 0.5;
+      if (!raf) raf = requestAnimationFrame(tick);
     });
-    if (focus) tab.focus();
-    // keep the active chip in view on mobile (horizontal scroll)
-    const strip = tab.parentElement.parentElement;
-    if (strip.scrollWidth > strip.clientWidth) {
-      strip.scrollTo({ left: tab.offsetLeft - 16, behavior: reduceMotion ? 'auto' : 'smooth' });
-    }
-  };
-  tabs.forEach((tab, idx) => {
-    tab.addEventListener('click', () => selectTab(tab));
-    tab.addEventListener('keydown', (e) => {
-      let next = null;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(idx + 1) % tabs.length];
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(idx - 1 + tabs.length) % tabs.length];
-      if (e.key === 'Home') next = tabs[0];
-      if (e.key === 'End') next = tabs[tabs.length - 1];
-      if (next) { e.preventDefault(); selectTab(next, true); }
-    });
-  });
+    hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; if (!raf) raf = requestAnimationFrame(tick); });
+  }
 
-  // Thumbnails swap the panel's main photo
-  $$('.svc-panel').forEach((panel) => {
-    const main = $('.js-panel-img', panel);
-    const thumbs = $$('.thumb', panel);
-    thumbs.forEach((th) => th.addEventListener('click', () => {
-      thumbs.forEach((t) => t.setAttribute('aria-pressed', String(t === th)));
-      const base = th.dataset.src;
-      main.style.opacity = '0';
-      setTimeout(() => {
-        main.src = `${base}-sm.webp`;
-        main.srcset = `${base}-sm.webp 640w, ${base}.webp ${th.dataset.w}w`;
-        main.width = 640;
-        main.height = Math.round(640 * th.dataset.h / th.dataset.w);
-        main.alt = th.dataset.alt;
-        main.style.opacity = '1';
-      }, reduceMotion ? 0 : 180);
-    }));
-    main.style.transition = 'opacity .25s ease';
+  /* ---------- Menu: one item open at a time, shown on the cake stand ---------- */
+  const items = $$('.menu-item');
+  const standWrap = $('.stand-photo');
+  const standImg = $('#stand-img');
+  const standCap = $('#stand-cap');
+  const showOnStand = (item) => {
+    if (!standImg) return;
+    const base = item.dataset.photo;
+    standWrap.classList.add('is-swapping');
+    setTimeout(() => {
+      standImg.src = `${base}-sm.webp`;
+      standImg.srcset = `${base}-sm.webp 640w, ${base}.webp ${item.dataset.w}w`;
+      standImg.height = Math.round(640 * item.dataset.h / item.dataset.w);
+      standImg.alt = item.dataset.alt;
+      standCap.innerHTML = item.dataset.cap;
+      standWrap.classList.remove('is-swapping');
+    }, reduceMotion ? 0 : 260);
+  };
+  items.forEach((item) => {
+    const btn = $('.menu-row', item);
+    btn.addEventListener('click', () => {
+      const opening = !item.classList.contains('is-open');
+      items.forEach((it) => {
+        const on = it === item && opening;
+        it.classList.toggle('is-open', on);
+        $('.menu-row', it).setAttribute('aria-expanded', String(on));
+      });
+      if (opening) showOnStand(item);
+    });
+    // desktop: hovering a closed item previews it on the stand
+    if (finePointer) btn.addEventListener('mouseenter', () => { if (window.innerWidth >= 1024) showOnStand(item); });
+  });
+  const menu = $('#menu');
+  if (menu && finePointer) menu.addEventListener('mouseleave', () => {
+    const open = items.find((it) => it.classList.contains('is-open'));
+    if (open && window.innerWidth >= 1024) showOnStand(open);
   });
 
   // "Ask about…" buttons pre-select the form's service
@@ -127,90 +141,112 @@
     serviceSelect.classList.remove('is-invalid');
   }));
 
-  /* ---------- Gallery filter ---------- */
-  const gallery = $('#gallery');
-  const tiles = $$('.tile', gallery);
-  const chips = $$('[data-filter]');
-  chips.forEach((chip) => chip.addEventListener('click', () => {
-    const f = chip.dataset.filter;
-    chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
-    gallery.classList.toggle('is-filtered', f !== 'all');
-    tiles.forEach((t) => {
-      const show = f === 'all' || t.dataset.cat === f;
-      t.classList.toggle('is-hidden', !show);
-      if (show && !reduceMotion) {
-        t.animate([{ opacity: 0, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 380, easing: 'cubic-bezier(.2,.8,.2,1)' });
-      }
+  /* ---------- Polaroid deck ---------- */
+  const deck = $('#deck');
+  const cards = $$('.card', deck);
+  const nums = $$('.deck-num');
+  const live = $('#deck-live');
+  let order = cards.map((_, i) => i);
+  const poses = [
+    'translate(0,0) rotate(-2deg)',
+    'translate(18px,10px) rotate(5deg) scale(.96)',
+    'translate(-20px,18px) rotate(-7deg) scale(.92)',
+    'translate(6px,26px) rotate(3deg) scale(.88)',
+  ];
+  const layout = () => {
+    order.forEach((ci, pos) => {
+      const c = cards[ci];
+      c.style.zIndex = String(cards.length - pos);
+      c.style.transform = poses[Math.min(pos, poses.length - 1)];
+      c.style.opacity = pos < poses.length ? '1' : '0';
+      c.setAttribute('aria-hidden', String(pos !== 0));
     });
-  }));
+    const n = String(order[0] + 1).padStart(2, '0');
+    nums.forEach((el) => { el.textContent = n; });
+    live.textContent = `${$('figcaption', cards[order[0]]).textContent}, ${order[0] + 1} of ${cards.length}`;
+  };
+  const go = (dir) => {
+    if (dir > 0) {
+      const top = cards[order[0]];
+      top.style.transform = 'translate(-120%, -20px) rotate(-22deg)';
+      top.style.opacity = '0';
+      setTimeout(() => { order.push(order.shift()); layout(); }, reduceMotion ? 0 : 280);
+    } else {
+      order.unshift(order.pop());
+      const top = cards[order[0]];
+      top.style.transition = 'none';
+      top.style.transform = 'translate(120%, -20px) rotate(22deg)';
+      top.style.opacity = '0';
+      top.offsetWidth; // reflow so it flies back in
+      top.style.transition = '';
+      layout();
+    }
+  };
+  $$('.deck-next').forEach((b) => b.addEventListener('click', () => go(1)));
+  $$('.deck-prev').forEach((b) => b.addEventListener('click', () => go(-1)));
+  deck.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+    if (e.key === 'Enter') openLb(order[0]);
+  });
+  // drag / swipe the top card
+  let startX = 0, dx = 0, dragging = false, moved = false;
+  deck.addEventListener('pointerdown', (e) => {
+    const top = cards[order[0]];
+    if (!top.contains(e.target)) return;
+    dragging = true; moved = false; startX = e.clientX; dx = 0;
+    top.classList.add('is-dragging');
+    top.setPointerCapture(e.pointerId);
+  });
+  deck.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    dx = e.clientX - startX;
+    if (Math.abs(dx) > 6) moved = true;
+    cards[order[0]].style.transform = `translate(${dx}px, 0) rotate(${dx / 14 - 2}deg)`;
+  });
+  const endDrag = () => {
+    if (!dragging) return;
+    dragging = false;
+    const top = cards[order[0]];
+    top.classList.remove('is-dragging');
+    if (Math.abs(dx) > 80) go(dx < 0 ? 1 : -1);
+    else layout();
+    if (!moved) openLb(order[0]);
+  };
+  deck.addEventListener('pointerup', endDrag);
+  deck.addEventListener('pointercancel', () => { dragging = false; cards[order[0]].classList.remove('is-dragging'); layout(); });
+  layout();
 
-  /* ---------- Lightbox ---------- */
+  /* ---------- Lightbox (opened from the deck) ---------- */
   const lb = $('#lightbox');
   const lbImg = $('#lb-img');
   const lbCap = $('#lb-cap');
-  const lbCount = $('#lb-count');
-  let current = 0;
   let lastFocus = null;
-  const visibleTiles = () => tiles.filter((t) => !t.classList.contains('is-hidden'));
-
-  const show = (idx) => {
-    const list = visibleTiles();
-    current = (idx + list.length) % list.length;
-    const t = list[current];
-    const img = $('img', t);
+  function openLb(ci) {
+    const c = cards[ci];
+    lastFocus = document.activeElement;
     lbImg.style.opacity = '0';
     const pre = new Image();
-    pre.onload = () => {
-      lbImg.src = t.getAttribute('href');
-      lbImg.alt = img.alt;
-      lbImg.style.opacity = '1';
-    };
-    pre.src = t.getAttribute('href');
-    lbCap.textContent = t.dataset.caption;
-    lbCount.textContent = `${current + 1} of ${list.length}`;
-  };
-  const openLb = (idx) => {
-    lastFocus = document.activeElement;
-    show(idx);
+    pre.onload = () => { lbImg.src = c.dataset.full; lbImg.alt = $('img', c).alt; lbImg.style.opacity = '1'; };
+    pre.src = c.dataset.full;
+    lbCap.textContent = $('figcaption', c).textContent;
     lb.classList.add('is-open');
     lb.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     $('#lb-close').focus();
-  };
+  }
   const closeLb = () => {
     lb.classList.remove('is-open');
     lb.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     if (lastFocus) lastFocus.focus();
   };
-  tiles.forEach((t) => t.addEventListener('click', (e) => {
-    e.preventDefault();
-    openLb(visibleTiles().indexOf(t));
-  }));
   $('#lb-close').addEventListener('click', closeLb);
-  $('#lb-prev').addEventListener('click', () => show(current - 1));
-  $('#lb-next').addEventListener('click', () => show(current + 1));
-  lb.addEventListener('click', (e) => { if (e.target === lb || e.target.parentElement === lb && e.target.tagName !== 'P') closeLb(); });
+  lb.addEventListener('click', (e) => { if (e.target !== lbImg && !e.target.closest('#lb-close')) closeLb(); });
   document.addEventListener('keydown', (e) => {
     if (!lb.classList.contains('is-open')) return;
     if (e.key === 'Escape') closeLb();
-    if (e.key === 'ArrowLeft') show(current - 1);
-    if (e.key === 'ArrowRight') show(current + 1);
-    if (e.key === 'Tab') { // keep focus inside the viewer
-      const f = $$('button', lb).filter((b) => b.offsetParent !== null);
-      const first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    }
-  });
-  // swipe on touch screens
-  let x0 = null;
-  lb.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
-  lb.addEventListener('touchend', (e) => {
-    if (x0 === null) return;
-    const dx = e.changedTouches[0].clientX - x0;
-    if (Math.abs(dx) > 45) show(current + (dx < 0 ? 1 : -1));
-    x0 = null;
+    if (e.key === 'Tab') { e.preventDefault(); $('#lb-close').focus(); }
   });
 
   /* ---------- Quote form: inline validation + submit state ---------- */
@@ -229,11 +265,7 @@
   });
   form.addEventListener('submit', (e) => {
     const bad = fields.filter((el) => !check(el));
-    if (bad.length) {
-      e.preventDefault();
-      bad[0].focus();
-      return;
-    }
+    if (bad.length) { e.preventDefault(); bad[0].focus(); return; }
     const btn = $('#f-submit');
     btn.disabled = true;
     btn.classList.add('opacity-80');
@@ -241,9 +273,8 @@
     $('.js-spin', btn).classList.remove('hidden');
   });
 
-  /* ---------- Sticky mobile bar: shows after the hero ---------- */
+  /* ---------- Sticky mobile bar: shows after the hero, hides at the form ---------- */
   const bar = $('#call-bar');
-  const hero = $('#top');
   const contact = $('#contact');
   const onScrollBar = () => {
     const pastHero = window.scrollY > hero.offsetHeight * 0.6;

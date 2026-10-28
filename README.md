@@ -15,12 +15,12 @@ index.html              ← the whole site; sections separated by big comment ba
 thanks.html             ← page shown after the quote form is sent
 404.html                ← GitHub Pages "not found" page (uses <base href="/the-cake-lady/">)
 assets/css/styles.css   ← compiled Tailwind (do not edit by hand, run npm run build)
-assets/js/main.js       ← menu, scroll reveals, hero photo card, services explorer,
-                          gallery filter + lightbox, form validation, mobile call bar
-assets/fonts/           ← self-hosted Fraunces + Nunito Sans (woff2) with OFL licences
+assets/js/main.js       ← menu, reveals, hero sprinkles + parallax, services menu + cake stand,
+                          polaroid stack + lightbox, form validation, mobile call bar
+assets/fonts/           ← self-hosted Shrikhand, Schibsted Grotesk, Gochi Hand (woff2) + OFL licences
 images/brand/mark.svg   ← the cupcake mark used in the header, footer and favicons
 images/work/            ← cake photos, each as name.webp (full) + name-sm.webp (640px)
-images/                 ← favicons, og-image.jpg (1200×630 share card), site.webmanifest
+images/                 ← favicons, og-image.jpg (1200×630 share card), site.webmanifest, frosting.svg (hero edge)
 src/input.css           ← Tailwind source, @font-face, components, hero animation keyframes
 tailwind.config.js      ← brand colours (with notes on where each came from) + fonts
 sitemap.xml, robots.txt
@@ -29,29 +29,32 @@ _fb-pack/               ← the Facebook research pack (not published, see Sourc
 
 ## Brand
 
+The look is a retro cake shop: a pink gingham tablecloth, a chunky 3D shop-sign wordmark, her real cakes stuck round it like stickers, and hard-shadowed "sticker" buttons and cards.
+
 | Name | Hex | Used for |
 | --- | --- | --- |
-| Cocoa | `#3A2414` | Text, buttons, the chocolate "What I make" section, footer, illustration outlines |
-| Buttercream | `#FBF5EA` | Page background |
-| Cream 200 | `#F4E9D6` | Contact section, photo frames |
-| Rose | `#E98A9E` | Ribbon marquee, active tabs, piped underlines, bow, accents |
-| Rose pale | `#FCEBE8` | "How ordering works" section, hero plate |
-| Rose dark | `#B4445D` | Pink text on cream (passes contrast) |
-| Gold | `#D6AB34` | Sugar-ball dots, stars, cake stand |
-| Muted | `#6B5444` | Body copy |
+| Cocoa | `#3A2414` | Text, outlines, hard shadows, the Recent cakes section, footer |
+| Cream | `#FFF5E6` | Page background, sign lettering, icing drips |
+| Strawberry | `#EE7A98` | Hero gingham, ticket header, footer sign |
+| Strawberry light / pale | `#FFD3DE` / `#FFE9EE` | Contact gingham, beads, tape |
+| Strawberry dark | `#C1446A` | Pink text on cream (passes contrast) |
+| Buttercup | `#FFCB45` | Ordering section, badge, call button, tape |
+| Pistachio | `#9FD08A` | Small accents only (beads, seal, step 3) |
+| Muted | `#6E5444` | Body copy |
 
-Colours come from her photos: the chocolate boards and ganache, the cream cake boxes, the blush-pink cupcake boxes and the gold sugar hearts / cheese yellow.
+Colours come from her photos: the chocolate boards and ganache, the cream boxes, her blush-pink cupcake boxes, the cheese/DeWalt yellow and the piped golf-green grass.
 
-- **Fonts:** Fraunces (display, soft serif) and Nunito Sans (body), both self-hosted from @fontsource.
-- **Logo:** the Facebook page has no logo (its profile picture is a cake photo), so the site uses a simple typographic wordmark ("The Cake Lady / Guernsey") with a small cupcake mark drawn as SVG. **This is a placeholder: check with Bryony whether she has a logo she'd like used instead.**
+- **Fonts:** Shrikhand (display, retro bakery-sign lettering), Schibsted Grotesk (body), Gochi Hand (handwritten notes and polaroid captions only). All self-hosted from @fontsource.
+- **Logo:** the Facebook page has no logo (its profile picture is a cake photo), so the site uses "The Cake Lady" set in Shrikhand with a small cupcake mark drawn as SVG. **This is a placeholder: check with Bryony whether she has a logo she'd like used instead.**
 
 ## Editing
 
-- **Text:** everything is in `index.html`. Search for the section banner (e.g. `SERVICES`, `HOW TO ORDER`, `ABOUT`).
+- **Text:** everything is in `index.html`. Search for the section banner (`HERO`, `WHAT I MAKE`, `RECENT CAKES`, `HOW ORDERING WORKS`, `ABOUT`, `GET A QUOTE`).
 - **Colours / fonts:** change them in `tailwind.config.js`, then run `npm run build`.
-- **Adding a work photo:** export it as `images/work/my-cake.webp` (up to ~1600px wide) and `images/work/my-cake-sm.webp` (640px wide). Copy one of the `<a class="tile …">` blocks in the `RECENT WORK` section, update the `href`, `src`, `width`/`height`, `alt` and `data-caption`, and set `data-cat` to `cakes`, `cupcakes` or `traybakes` so the filter picks it up. On tablet/desktop the first and sixth tiles are the large ones.
-- **Services explorer:** each service is a tab button (`role="tab"`) plus a matching panel (`id="panel-…"`). To change a panel's photos, edit its `.thumb` buttons (`data-src` is the photo path without `-sm.webp`/`.webp`, plus its full width/height). The "Ask about…" button's `data-service` must match an `<option>` in the form's "What would you like?" list.
-- **Hero illustration:** inline SVG in the `HERO` section. Its animations (tiers dropping in, the piping bag, drips, candle flame) are the `.hc-*` classes at the bottom of `src/input.css`. All motion switches off for visitors with "reduce motion" turned on.
+- **Hero stickers:** the four `.cut` blocks in the hero. Change the `<img>` to swap a photo; the shape comes from `cut-arch`, `cut-round`, `cut-blob` or `cut-tile`, and `data-depth` sets how far it drifts with the mouse. The big letters are individual spans so they can bounce in.
+- **What I make (menu):** each `.menu-item` is one service. Its `data-photo`, `data-w`, `data-h`, `data-alt` and `data-cap` set what appears under the glass dome on the cake stand (desktop). The "Ask about…" button's `data-service` must match an `<option>` in the form.
+- **Recent cakes (polaroid stack):** each `<figure class="card">` is one photo. Set `data-full` to the large image, the `<img>` to the `-sm` version, and the caption in `<figcaption>`. Update the "/ 10" count if you add or remove one.
+- **Adding a work photo:** export `images/work/my-cake.webp` (up to ~1600px) and `images/work/my-cake-sm.webp` (640px), then add a card as above.
 - **Before & after:** not used. This isn't a before/after trade.
 
 ## Before going live — checklist
