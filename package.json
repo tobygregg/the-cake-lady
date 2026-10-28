@@ -1,0 +1,14 @@
+{
+  "name": "the-cake-lady-website",
+  "version": "1.0.0",
+  "description": "The Cake Lady Guernsey — static website (Tailwind)",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./assets/css/styles.css --watch"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "private": true
+}

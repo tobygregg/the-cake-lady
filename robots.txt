@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tobygregg.github.io/the-cake-lady/sitemap.xml
