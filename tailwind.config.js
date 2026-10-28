@@ -47,8 +47,8 @@ module.exports = {
         site: '1240px',
       },
       boxShadow: {
-        sticker: '0 0 0 3px #3A2414, 7px 8px 0 #3A2414',
-        'sticker-sm': '0 0 0 2.5px #3A2414, 4px 5px 0 #3A2414',
+        sticker: '0 0 0 3px #3A2414, 5px 6px 0 #3A2414',
+        'sticker-sm': '0 0 0 2.5px #3A2414, 3px 4px 0 #3A2414',
         btn: '0 5px 0 #26170C',
         'btn-cream': '0 5px 0 #3A2414',
       },

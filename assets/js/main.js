@@ -1,7 +1,6 @@
 /* ============================================================
    The Cake Lady Guernsey — site behaviour
-   Sections: header · mobile menu · reveals · hero (sprinkles,
-             parallax) · menu + cake stand · polaroid deck
+   Sections: header · mobile menu · reveals · menu + cake stand · polaroid deck
              lightbox · quote form · mobile call bar
    ============================================================ */
 (() => {
@@ -55,46 +54,7 @@
     revealEls.forEach((el) => el.classList.add('is-in'));
   }
 
-  /* ---------- Hero: falling sprinkles ---------- */
   const hero = $('#top');
-  const sprinkleBox = $('#sprinkles');
-  if (sprinkleBox && !reduceMotion) {
-    const colours = ['#FFF5E6', '#FFCB45', '#9FD08A', '#3A2414', '#FFD3DE'];
-    const count = window.innerWidth < 640 ? 16 : 30;
-    for (let i = 0; i < count; i++) {
-      const s = document.createElement('span');
-      s.className = 'sprinkle';
-      s.style.left = `${Math.random() * 100}%`;
-      s.style.background = colours[i % colours.length];
-      s.style.setProperty('--sr', `${Math.round(Math.random() * 180)}deg`);
-      s.style.setProperty('--fall', `${hero.offsetHeight + 60}px`);
-      s.style.animationDuration = `${7 + Math.random() * 7}s`;
-      s.style.animationDelay = `${-Math.random() * 14}s`;
-      sprinkleBox.appendChild(s);
-    }
-  }
-
-  /* ---------- Hero: stickers drift with the mouse ---------- */
-  const par = $$('.js-par');
-  if (finePointer && !reduceMotion && par.length) {
-    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
-    const tick = () => {
-      cx += (tx - cx) * 0.08;
-      cy += (ty - cy) * 0.08;
-      par.forEach((el) => {
-        const d = +el.dataset.depth;
-        el.style.translate = `${cx * d}px ${cy * d}px`;
-      });
-      raf = Math.abs(tx - cx) + Math.abs(ty - cy) > 0.001 ? requestAnimationFrame(tick) : 0;
-    };
-    hero.addEventListener('pointermove', (e) => {
-      const r = hero.getBoundingClientRect();
-      tx = (e.clientX - r.left) / r.width - 0.5;
-      ty = (e.clientY - r.top) / r.height - 0.5;
-      if (!raf) raf = requestAnimationFrame(tick);
-    });
-    hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; if (!raf) raf = requestAnimationFrame(tick); });
-  }
 
   /* ---------- Menu: one item open at a time, shown on the cake stand ---------- */
   const items = $$('.menu-item');

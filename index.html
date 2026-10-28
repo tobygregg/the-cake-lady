@@ -207,13 +207,13 @@
 </header>
 
 <!-- Mobile menu: opens as a circle from the button -->
-<div id="mobile-menu" class="gingham fixed inset-0 z-40 flex flex-col pt-[84px] lg:hidden" aria-hidden="true">
+<div id="mobile-menu" class="bg-berry-pale fixed inset-0 z-40 flex flex-col pt-[84px] lg:hidden" aria-hidden="true">
   <nav class="wrap flex flex-1 flex-col justify-center gap-3 pb-6" aria-label="Mobile">
-    <a href="#cakes" class="m-link sign-sm self-start font-display text-[44px] leading-tight text-cream" style="--i:0">Cakes</a>
-    <a href="#work" class="m-link sign-sm self-start font-display text-[44px] leading-tight text-cream" style="--i:1">Recent work</a>
-    <a href="#order" class="m-link sign-sm self-start font-display text-[44px] leading-tight text-cream" style="--i:2">Ordering</a>
-    <a href="#about" class="m-link sign-sm self-start font-display text-[44px] leading-tight text-cream" style="--i:3">About</a>
-    <a href="#contact" class="m-link sign-sm self-start font-display text-[44px] leading-tight text-cream" style="--i:4">Contact</a>
+    <a href="#cakes" class="m-link self-start font-display text-[42px] leading-tight text-cocoa" style="--i:0">Cakes</a>
+    <a href="#work" class="m-link self-start font-display text-[42px] leading-tight text-cocoa" style="--i:1">Recent work</a>
+    <a href="#order" class="m-link self-start font-display text-[42px] leading-tight text-cocoa" style="--i:2">Ordering</a>
+    <a href="#about" class="m-link self-start font-display text-[42px] leading-tight text-cocoa" style="--i:3">About</a>
+    <a href="#contact" class="m-link self-start font-display text-[42px] leading-tight text-cocoa" style="--i:4">Contact</a>
   </nav>
   <div class="wrap grid grid-cols-2 gap-3 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
     <a href="tel:+447781152205" class="btn-cream"><svg class="h-5 w-5" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
@@ -224,63 +224,37 @@
 <main id="main">
 
 <!-- ============================================================
-     HERO — the cake shop sign on a gingham tablecloth,
-     with her real cakes stuck round it like stickers
+     HERO — the name, one line, and three of her cakes set down
+     in a row underneath
      ============================================================ -->
-<section id="top" class="gingham relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-  <div id="sprinkles" class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
-
-  <!-- sticker cut-outs (data-depth = how far they drift with the mouse) -->
-  <div class="cut cut-arch js-par cut-pop left-[-22px] top-[84px] h-[150px] w-[112px] sm:left-[3%] sm:top-[110px] sm:h-[190px] sm:w-[142px] lg:left-[4%] lg:top-[15%] lg:h-[310px] lg:w-[232px]" data-depth="22" style="--d:.5s">
-    <div class="cut-inner" style="--rot:-7deg"><div class="cut-frame"><img src="images/work/go-kart-cake-sm.webp" width="640" height="853" alt="Go-kart cake with a sugar driver, cones and tyres"></div></div>
-  </div>
-  <div class="cut cut-round js-par cut-pop right-[-26px] top-[96px] h-[128px] w-[128px] sm:right-[3%] sm:top-[104px] sm:h-[160px] sm:w-[160px] lg:right-[5%] lg:top-[13%] lg:h-[262px] lg:w-[262px]" data-depth="-28" style="--d:.62s">
-    <div class="cut-inner" style="--rot:8deg;animation-delay:-2s"><div class="cut-frame"><img src="images/work/cheese-and-mice-60th-sm.webp" width="640" height="640" alt="Yellow cheese cake with sugar mice, for a 60th birthday" fetchpriority="high"></div></div>
-  </div>
-  <div class="cut cut-blob js-par cut-pop bottom-[92px] left-[-30px] h-[132px] w-[132px] sm:bottom-[70px] sm:left-[3%] sm:h-[160px] sm:w-[160px] lg:bottom-[11%] lg:left-[10%] lg:h-[236px] lg:w-[236px]" data-depth="-18" style="--d:.74s">
-    <div class="cut-inner" style="--rot:5deg;animation-delay:-4s"><div class="cut-frame"><img src="images/work/sprinkle-cupcakes-sm.webp" width="640" height="853" alt="Buttercream cupcakes with pink sprinkles, sugar stars and hearts"></div></div>
-  </div>
-  <div class="cut cut-tile js-par cut-pop bottom-[104px] right-[-20px] h-[146px] w-[114px] sm:bottom-[70px] sm:right-[3%] sm:h-[190px] sm:w-[148px] lg:bottom-[9%] lg:right-[9%] lg:h-[290px] lg:w-[226px]" data-depth="26" style="--d:.86s">
-    <div class="cut-inner" style="--rot:-5deg;animation-delay:-1s"><div class="cut-frame"><img src="images/work/new-baby-cake-sm.webp" width="640" height="853" alt="Pink new baby cake with a sleeping baby, teddy, moon and clouds"></div></div>
-  </div>
-    <!-- doodles -->
-  <div class="doodle cut-pop hidden lg:block lg:right-[calc(5%+70px)] lg:top-[calc(13%+282px)]" style="--d:1.3s" aria-hidden="true">
-    <svg class="mb-1 ml-10 h-10 w-16" viewBox="0 0 64 40" fill="none" stroke="#3A2414" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 36C10 20 22 8 44 6"/><path d="m34 2 10 4-8 9"/></svg>
-    <span class="block -rotate-6">cheese &amp; mice, for a 60th</span>
-  </div>
-  <!-- spinning badge -->
-  <div class="pop is-in absolute z-10 hidden lg:block lg:left-[calc(4%+170px)] lg:top-[calc(15%+260px)]" aria-hidden="true">
-    <div class="relative h-[112px] w-[112px] lg:h-[132px] lg:w-[132px]">
-      <svg class="spin absolute inset-0 h-full w-full" viewBox="0 0 132 132">
-        <defs><path id="badgeCircle" d="M66 66m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs>
-        <circle cx="66" cy="66" r="63" fill="#FFCB45" stroke="#3A2414" stroke-width="3"/>
-        <text font-family="Schibsted Grotesk, sans-serif" font-weight="800" font-size="12.5" letter-spacing="2.4" fill="#3A2414"><textPath href="#badgeCircle">MADE IN GUERNSEY ✦ MADE IN GUERNSEY ✦</textPath></text>
-      </svg>
-      <svg class="absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 lg:h-14 lg:w-14"><use href="#mark"/></svg>
-    </div>
-  </div>
-
-  <!-- the sign -->
-  <div class="relative z-10 mx-auto flex w-full max-w-[980px] flex-1 flex-col items-center justify-center px-4 pb-[96px] pt-[100px] text-center sm:pb-[120px]">
-    <p class="cut-pop mb-5 inline-flex items-center gap-2 rounded-full border-[3px] border-cocoa bg-cream-50 px-4 py-1.5 text-[13px] font-extrabold uppercase tracking-[0.14em] shadow-sticker-sm sm:text-[14px]" style="--d:.1s">
-      <svg class="h-3.5 w-3.5 fill-berry" aria-hidden="true"><use href="#i-heart"/></svg>Bryony Nicholls · Guernsey
-    </p>
-    <h1>
+<section id="top" class="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-berry-pale">
+  <div class="mx-auto flex w-full max-w-[1200px] flex-1 flex-col items-center justify-center px-4 pb-16 pt-[100px] text-center sm:pt-[120px]">
+    <p class="cut-pop text-[14px] font-extrabold uppercase tracking-[0.18em] text-berry-dark" style="--d:.05s">Bryony Nicholls · Guernsey</p>
+    <h1 class="mt-4">
       <span class="sr-only">The Cake Lady Guernsey. </span>
-      <span class="sign block -rotate-3 font-display text-[4.1rem] leading-[.92] sm:text-[7rem] lg:text-[9.6rem]" aria-hidden="true">
-        <span class="block whitespace-nowrap"><span class="hero-letter" style="--i:0">T</span><span class="hero-letter" style="--i:1">h</span><span class="hero-letter" style="--i:2">e</span> <span class="hero-letter" style="--i:3">C</span><span class="hero-letter" style="--i:4">a</span><span class="hero-letter" style="--i:5">k</span><span class="hero-letter" style="--i:6">e</span></span>
-        <span class="block whitespace-nowrap pl-[.6em]"><span class="hero-letter" style="--i:7">L</span><span class="hero-letter" style="--i:8">a</span><span class="hero-letter" style="--i:9">d</span><span class="hero-letter" style="--i:10">y</span></span>
+      <span class="block font-display text-[4rem] leading-[.95] text-cocoa [text-shadow:4px_4px_0_#EE7A98] sm:whitespace-nowrap sm:text-[5.6rem] sm:[text-shadow:6px_6px_0_#EE7A98] lg:text-[7rem]" aria-hidden="true">
+        <span class="hero-letter" style="--i:0">T</span><span class="hero-letter" style="--i:1">h</span><span class="hero-letter" style="--i:2">e</span> <span class="hero-letter" style="--i:3">C</span><span class="hero-letter" style="--i:4">a</span><span class="hero-letter" style="--i:5">k</span><span class="hero-letter" style="--i:6">e</span><br class="sm:hidden"> <span class="hero-letter" style="--i:7">L</span><span class="hero-letter" style="--i:8">a</span><span class="hero-letter" style="--i:9">d</span><span class="hero-letter" style="--i:10">y</span>
       </span>
-      <span class="cut-pop mx-auto mt-6 block max-w-[24ch] text-[18px] font-bold leading-snug text-cocoa sm:mt-8 sm:max-w-[30ch] sm:text-[22px]" style="--d:.9s">Decorated cakes and cupcakes for every occasion, made in Guernsey.</span>
+      <span class="cut-pop mx-auto mt-5 block max-w-[30ch] text-[18px] font-medium leading-snug text-muted sm:mt-6 sm:text-[21px]" style="--d:.7s">Decorated cakes and cupcakes for every occasion, made in Guernsey.</span>
     </h1>
-    <div class="cut-pop mt-6 flex flex-wrap justify-center gap-3 sm:mt-8" style="--d:1.05s">
+    <div class="cut-pop mt-7 flex flex-wrap justify-center gap-3" style="--d:.8s">
       <a href="#contact" class="btn-cocoa">Get a quote <svg class="h-5 w-5" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       <a href="tel:+447781152205" class="btn-cream"><svg class="h-5 w-5" aria-hidden="true"><use href="#i-phone"/></svg><span>Call<span class="hidden sm:inline"> 07781 152205</span></span></a>
     </div>
-  </div>
 
-  <!-- piped frosting edge -->
-  <div class="absolute inset-x-0 bottom-0 h-[44px] bg-[url('../../images/frosting.svg')] bg-[length:80px_44px] bg-repeat-x" aria-hidden="true"></div>
+    <!-- three cakes, set down in a row -->
+    <div class="mt-12 flex items-end justify-center sm:mt-14" aria-label="Recent cakes">
+      <figure class="cut-arch cut-pop relative z-10 h-[164px] w-[122px] sm:h-[230px] sm:w-[172px] lg:h-[260px] lg:w-[195px]" style="--d:.95s">
+        <div class="cut-frame -rotate-6"><img class="h-full w-full object-cover" src="images/work/go-kart-cake-sm.webp" width="640" height="853" alt="Go-kart cake with a sugar driver, cones and tyres"></div>
+      </figure>
+      <figure class="cut-round cut-pop relative z-20 -mx-3 mb-6 h-[148px] w-[148px] sm:-mx-4 sm:mb-10 sm:h-[210px] sm:w-[210px] lg:h-[236px] lg:w-[236px]" style="--d:1.05s">
+        <div class="cut-frame"><img class="h-full w-full object-cover" src="images/work/cheese-and-mice-60th-sm.webp" width="640" height="640" alt="Yellow cheese cake with sugar mice, for a 60th birthday" fetchpriority="high"></div>
+      </figure>
+      <figure class="cut-tile cut-pop relative z-10 h-[164px] w-[122px] sm:h-[230px] sm:w-[172px] lg:h-[260px] lg:w-[195px]" style="--d:1.15s">
+        <div class="cut-frame rotate-6"><img class="h-full w-full object-cover" src="images/work/new-baby-cake-sm.webp" width="640" height="853" alt="Pink new baby cake with a sleeping baby, teddy, moon and clouds"></div>
+      </figure>
+    </div>
+  </div>
 </section>
 
 <!-- ============================================================
@@ -408,11 +382,10 @@
   <svg class="drip-edge top-0 h-[60px] sm:h-[80px]" viewBox="0 0 1440 96" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
     <g fill="#FFF5E6"><rect x="0" y="-2" width="1440" height="16"/><path d="M1 13Q10 13 10 24H34Q34 13 43 13ZM55 13Q64 13 64 24H94Q94 13 103 13ZM129 13Q138 13 138 24H174Q174 13 183 13ZM191 13Q200 13 200 24H228Q228 13 237 13ZM271 13Q280 13 280 24H320Q320 13 329 13ZM349 13Q358 13 358 24H382Q382 13 391 13ZM407 13Q416 13 416 24H446Q446 13 455 13ZM467 13Q476 13 476 24H512Q512 13 521 13ZM547 13Q556 13 556 24H584Q584 13 593 13ZM601 13Q610 13 610 24H650Q650 13 659 13ZM693 13Q702 13 702 24H726Q726 13 735 13ZM755 13Q764 13 764 24H794Q794 13 803 13ZM819 13Q828 13 828 24H864Q864 13 873 13ZM885 13Q894 13 894 24H922Q922 13 931 13ZM957 13Q966 13 966 24H1006Q1006 13 1015 13ZM1023 13Q1032 13 1032 24H1056Q1056 13 1065 13ZM1099 13Q1108 13 1108 24H1138Q1138 13 1147 13ZM1167 13Q1176 13 1176 24H1212Q1212 13 1221 13ZM1237 13Q1246 13 1246 24H1274Q1274 13 1283 13ZM1295 13Q1304 13 1304 24H1344Q1344 13 1353 13ZM1379 13Q1388 13 1388 24H1412Q1412 13 1421 13Z"/><rect class="drop" x="10" y="0" width="24" height="46" rx="12"/><rect class="drop" x="64" y="0" width="30" height="74" rx="15"/><rect class="drop" x="138" y="0" width="36" height="34" rx="18"/><rect class="drop" x="200" y="0" width="28" height="60" rx="14"/><rect class="drop" x="280" y="0" width="40" height="90" rx="20"/><rect class="drop" x="358" y="0" width="24" height="42" rx="12"/><rect class="drop" x="416" y="0" width="30" height="66" rx="15"/><rect class="drop" x="476" y="0" width="36" height="38" rx="18"/><rect class="drop" x="556" y="0" width="28" height="82" rx="14"/><rect class="drop" x="610" y="0" width="40" height="52" rx="20"/><rect class="drop" x="702" y="0" width="24" height="70" rx="12"/><rect class="drop" x="764" y="0" width="30" height="36" rx="15"/><rect class="drop" x="828" y="0" width="36" height="78" rx="18"/><rect class="drop" x="894" y="0" width="28" height="48" rx="14"/><rect class="drop" x="966" y="0" width="40" height="92" rx="20"/><rect class="drop" x="1032" y="0" width="24" height="40" rx="12"/><rect class="drop" x="1108" y="0" width="30" height="62" rx="15"/><rect class="drop" x="1176" y="0" width="36" height="84" rx="18"/><rect class="drop" x="1246" y="0" width="28" height="44" rx="14"/><rect class="drop" x="1304" y="0" width="40" height="72" rx="20"/><rect class="drop" x="1388" y="0" width="24" height="56" rx="12"/></g>
   </svg>
-  <div class="dots pointer-events-none absolute inset-0 opacity-30 [background-image:radial-gradient(rgba(255,245,230,.18)_2px,transparent_2.5px)]" aria-hidden="true"></div>
 
   <div class="wrap relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
     <div class="text-center lg:text-left">
-      <h2 class="reveal h-display sign sign-sm">Recent cakes</h2>
+      <h2 class="reveal h-display text-cream">Recent cakes</h2>
       <p class="reveal mx-auto mt-5 max-w-[40ch] text-[17px] leading-relaxed text-cream/75 lg:mx-0" style="--d:.06s">A few recent orders. Swipe or drag to flick through them, and tap a photo to see it bigger.</p>
       <div class="reveal mt-8 hidden items-center gap-4 lg:flex" style="--d:.12s">
         <button class="deck-prev btn-cream h-14 w-14 px-0" aria-label="Previous cake"><svg class="h-6 w-6" aria-hidden="true"><use href="#i-chev-l"/></svg></button>
@@ -447,9 +420,9 @@
 <!-- ============================================================
      HOW ORDERING WORKS — written up on a recipe card
      ============================================================ -->
-<section id="order" class="dots relative overflow-hidden bg-butter py-20 sm:py-24 lg:py-28">
+<section id="order" class="relative overflow-hidden bg-butter-light py-20 sm:py-24 lg:py-28">
   <div class="wrap">
-    <div class="reveal recipe mx-auto max-w-[1000px] px-5 pb-10 pt-12 sm:-rotate-1 sm:px-12 sm:pl-[78px] sm:pt-14 lg:pb-14">
+    <div class="reveal recipe mx-auto max-w-[1000px] px-5 pb-10 pt-12 sm:px-12 sm:pl-[78px] sm:pt-14 lg:pb-14">
       <span class="tape -top-4 left-6 -rotate-6 bg-berry-light/90 sm:left-10"></span>
       <span class="tape -top-4 right-6 rotate-6 sm:right-10"></span>
       <div class="grid grid-cols-1 gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-12">
@@ -498,21 +471,6 @@
       <div class="cut-arch relative mx-auto aspect-[4/5] w-[86%] rotate-[-3deg]">
         <div class="cut-frame"><img src="images/work/unicorn-cupcakes-sm.webp" width="640" height="853" alt="Unicorn cupcakes in individual pink gift boxes" loading="lazy"></div>
       </div>
-      <!-- credential seals -->
-      <svg class="seal spin absolute -left-2 bottom-6 h-[118px] w-[118px] sm:h-[132px] sm:w-[132px]" style="animation-duration:26s" viewBox="0 0 132 132" role="img" aria-label="Level 2 Award in Food Safety in Catering">
-        <defs><path id="sealA" d="M66 66m-47 0a47 47 0 1 1 94 0a47 47 0 1 1-94 0"/></defs>
-        <circle cx="66" cy="66" r="63" fill="#FFCB45" stroke="#3A2414" stroke-width="3"/>
-        <circle cx="66" cy="66" r="32" fill="#FFF5E6" stroke="#3A2414" stroke-width="3"/>
-        <text><textPath href="#sealA">LEVEL 2 FOOD SAFETY ✦ IN CATERING ✦</textPath></text>
-        <path d="m54 66 8 8 16-17" fill="none" stroke="#C1446A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <svg class="seal spin absolute -right-1 top-4 h-[108px] w-[108px] sm:h-[122px] sm:w-[122px]" style="animation-duration:30s;animation-direction:reverse" viewBox="0 0 132 132" role="img" aria-label="Public and Product Liability Insurance">
-        <defs><path id="sealB" d="M66 66m-47 0a47 47 0 1 1 94 0a47 47 0 1 1-94 0"/></defs>
-        <circle cx="66" cy="66" r="63" fill="#9FD08A" stroke="#3A2414" stroke-width="3"/>
-        <circle cx="66" cy="66" r="32" fill="#FFF5E6" stroke="#3A2414" stroke-width="3"/>
-        <text><textPath href="#sealB">PUBLIC &amp; PRODUCT ✦ LIABILITY INSURED ✦</textPath></text>
-        <path d="M66 50l13 5v8c0 8-6 14-13 16-7-2-13-8-13-16v-8z" fill="#FFD3DE" stroke="#3A2414" stroke-width="3" stroke-linejoin="round"/>
-      </svg>
     </div>
 
     <div>
@@ -532,7 +490,7 @@
 <!-- ============================================================
      GET A QUOTE — contact details + order ticket form
      ============================================================ -->
-<section id="contact" class="gingham-soft relative py-20 sm:py-24 lg:py-28">
+<section id="contact" class="relative bg-berry-pale py-20 sm:py-24 lg:py-28">
   <div class="wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
     <div>
       <h2 class="reveal h-display">Get a quote</h2>
@@ -556,9 +514,9 @@
 
     <!-- order ticket -->
     <div class="reveal" style="--d:.1s">
-      <div class="ticket sm:rotate-[1deg]">
+      <div class="ticket">
         <div class="flex items-center justify-between gap-4 rounded-t-[19px] border-b-[3px] border-cocoa bg-berry px-6 py-4 sm:px-9">
-          <p class="sign sign-sm font-display text-[28px] leading-none sm:text-[34px]">Order enquiry</p>
+          <p class="font-display text-[28px] leading-none text-cocoa sm:text-[32px]">Order enquiry</p>
           <svg class="h-10 w-10 shrink-0 rounded-full shadow-sticker-sm" aria-hidden="true"><use href="#mark"/></svg>
         </div>
         <span class="absolute left-[-3px] top-[74px] h-7 w-[17px] rounded-r-full border-[3px] border-l-0 border-cocoa bg-[#FFE9EE] sm:top-[82px]" aria-hidden="true"></span>
@@ -627,7 +585,7 @@
      ============================================================ -->
 <footer class="relative overflow-hidden bg-cocoa pb-28 pt-16 text-cream/80 lg:pb-12">
   <div class="wrap">
-    <p class="font-display whitespace-nowrap text-[clamp(2.6rem,10.6vw,9.4rem)] leading-[1.05] text-berry [-webkit-text-stroke:2px_#FFF5E6] [paint-order:stroke_fill] [text-shadow:6px_6px_0_#26170C]" aria-hidden="true">The Cake Lady</p>
+    <p class="font-display whitespace-nowrap text-[clamp(2.4rem,8vw,6.5rem)] leading-[1.05] text-berry" aria-hidden="true">The Cake Lady</p>
     <div class="mt-10 grid gap-8 border-t-2 border-cream/15 pt-8 sm:grid-cols-3">
       <p class="max-w-[30ch] text-[15.5px] leading-relaxed">Decorated cakes and cupcakes for all occasions, made by Bryony Nicholls in Guernsey.</p>
       <ul class="space-y-1 text-[15.5px]">
