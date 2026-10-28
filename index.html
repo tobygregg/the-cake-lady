@@ -228,148 +228,100 @@
      in a row underneath
      ============================================================ -->
 <section id="top" class="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-berry-pale">
+  <div class="hero-sprinkles pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
   <div class="mx-auto flex w-full max-w-[1200px] flex-1 flex-col items-center justify-center px-4 pb-16 pt-[100px] text-center sm:pt-[120px]">
-    <p class="cut-pop text-[14px] font-extrabold uppercase tracking-[0.18em] text-berry-dark" style="--d:.05s">Bryony Nicholls · Guernsey</p>
+    <p class="text-[14px] font-extrabold uppercase tracking-[0.18em] text-berry-dark">Bryony Nicholls · Guernsey</p>
     <h1 class="mt-4">
       <span class="sr-only">The Cake Lady Guernsey. </span>
       <span class="block font-display text-[4rem] leading-[.95] text-cocoa [text-shadow:4px_4px_0_#EE7A98] sm:whitespace-nowrap sm:text-[5.6rem] sm:[text-shadow:6px_6px_0_#EE7A98] lg:text-[7rem]" aria-hidden="true">
-        <span class="hero-letter" style="--i:0">T</span><span class="hero-letter" style="--i:1">h</span><span class="hero-letter" style="--i:2">e</span> <span class="hero-letter" style="--i:3">C</span><span class="hero-letter" style="--i:4">a</span><span class="hero-letter" style="--i:5">k</span><span class="hero-letter" style="--i:6">e</span><br class="sm:hidden"> <span class="hero-letter" style="--i:7">L</span><span class="hero-letter" style="--i:8">a</span><span class="hero-letter" style="--i:9">d</span><span class="hero-letter" style="--i:10">y</span>
+        The Cake<br class="sm:hidden"> Lady
       </span>
-      <span class="cut-pop mx-auto mt-5 block max-w-[30ch] text-[18px] font-medium leading-snug text-muted sm:mt-6 sm:text-[21px]" style="--d:.7s">Decorated cakes and cupcakes for every occasion, made in Guernsey.</span>
+      <span class="mx-auto mt-5 block max-w-[30ch] text-[18px] font-medium leading-snug text-muted sm:mt-6 sm:text-[21px]">Decorated cakes and cupcakes for every occasion, made in Guernsey.</span>
     </h1>
-    <div class="cut-pop mt-7 flex flex-wrap justify-center gap-3" style="--d:.8s">
+    <div class="mt-7 flex flex-wrap justify-center gap-3">
       <a href="#contact" class="btn-cocoa">Get a quote <svg class="h-5 w-5" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       <a href="tel:+447781152205" class="btn-cream"><svg class="h-5 w-5" aria-hidden="true"><use href="#i-phone"/></svg><span>Call<span class="hidden sm:inline"> 07781 152205</span></span></a>
     </div>
 
     <!-- three cakes, set down in a row -->
-    <div class="mt-12 flex items-end justify-center sm:mt-14" aria-label="Recent cakes">
+    <div class="hero-row relative mt-12 flex items-end justify-center sm:mt-14">
       <figure class="cut-arch cut-pop relative z-10 h-[164px] w-[122px] sm:h-[230px] sm:w-[172px] lg:h-[260px] lg:w-[195px]" style="--d:.95s">
         <div class="cut-frame -rotate-6"><img class="h-full w-full object-cover" src="images/work/go-kart-cake-sm.webp" width="640" height="853" alt="Go-kart cake with a sugar driver, cones and tyres"></div>
       </figure>
       <figure class="cut-round cut-pop relative z-20 -mx-3 mb-6 h-[148px] w-[148px] sm:-mx-4 sm:mb-10 sm:h-[210px] sm:w-[210px] lg:h-[236px] lg:w-[236px]" style="--d:1.05s">
         <div class="cut-frame"><img class="h-full w-full object-cover" src="images/work/cheese-and-mice-60th-sm.webp" width="640" height="640" alt="Yellow cheese cake with sugar mice, for a 60th birthday" fetchpriority="high"></div>
+        <span class="absolute -right-4 -top-3 grid h-[66px] w-[66px] rotate-12 place-items-center rounded-full border-[3px] border-cocoa bg-butter text-center text-[8.5px] font-extrabold uppercase leading-[1.05] tracking-[0.06em] shadow-sticker-sm sm:-right-6 sm:h-[84px] sm:w-[84px] sm:text-[12px]" aria-hidden="true">Made in<br>Guernsey</span>
       </figure>
       <figure class="cut-tile cut-pop relative z-10 h-[164px] w-[122px] sm:h-[230px] sm:w-[172px] lg:h-[260px] lg:w-[195px]" style="--d:1.15s">
         <div class="cut-frame rotate-6"><img class="h-full w-full object-cover" src="images/work/new-baby-cake-sm.webp" width="640" height="853" alt="Pink new baby cake with a sleeping baby, teddy, moon and clouds"></div>
       </figure>
     </div>
   </div>
+  <div class="frosting absolute inset-x-0 bottom-0 h-[34px]" aria-hidden="true"></div>
 </section>
 
 <!-- ============================================================
-     WHAT I MAKE — a bakery menu, the open item sits on the cake stand
+     WHAT I MAKE — one coloured card per kind of order
      ============================================================ -->
 <section id="cakes" class="relative py-20 sm:py-24 lg:py-28">
-  <div class="wrap grid grid-cols-1 gap-12 lg:grid-cols-[1.08fr_1fr] lg:gap-16">
-    <div>
-      <div class="relative">
-        <h2 class="reveal h-display whitespace-nowrap">What I make</h2>
-        <p class="reveal note absolute -top-7 left-[300px] hidden -rotate-6 text-berry-dark sm:block lg:left-[360px]" style="--d:.1s">tap one to have a look</p>
-      </div>
-      <p class="reveal lede mt-4" style="--d:.06s">Cakes, cupcakes and bakes for birthdays, new arrivals and parties, each one decorated to suit the occasion.</p>
-
-      <div class="reveal mt-8 border-t-[3px] border-dashed border-cocoa/20" id="menu" style="--d:.12s">
-
-        <div class="menu-item is-open" data-photo="images/work/toolbox-4th-birthday" data-w="720" data-h="960" data-alt="DeWalt toolbox cake with sugar tools, for a fourth birthday" data-cap="a toolbox for a 4th birthday">
-          <button class="menu-row" aria-expanded="true" aria-controls="m-celebration" id="mb-celebration">
-            <img class="h-14 w-14 shrink-0 rounded-full border-[3px] border-cocoa object-cover sm:h-16 sm:w-16" src="images/work/toolbox-4th-birthday-sm.webp" width="640" height="853" alt="" loading="lazy">
-            <span class="min-w-0"><span class="menu-name block">Celebration cakes</span><span class="mt-1.5 block text-[14.5px] font-bold text-muted">Birthdays, milestones and new arrivals</span></span>
-            <span class="menu-toggle" aria-hidden="true"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="menu-detail" id="m-celebration" role="region" aria-labelledby="mb-celebration"><div>
-            <div class="pb-7 sm:pl-20">
-              <p class="text-[16.5px] leading-relaxed text-muted">Themed cakes for birthdays and big occasions, from a toolbox for a fourth birthday to a wheel of cheese for a 60th. Tell me who it’s for and what they love, and I’ll take it from there.</p>
-              <ul class="bead-list mt-4 grid gap-2 text-[15.5px] font-bold sm:grid-cols-2">
-                <li>Hand-modelled sugar figures</li><li>Names, ages and messages</li><li>A decorated board to match</li><li>Baby shower and new baby designs</li>
-              </ul>
-              <img class="mt-5 aspect-[4/3] w-full rounded-[22px] border-[3px] border-cocoa object-cover lg:hidden" src="images/work/toolbox-4th-birthday-sm.webp" width="640" height="853" alt="DeWalt toolbox cake with sugar tools, for a fourth birthday" loading="lazy">
-              <a href="#contact" class="btn-berry mt-5 min-h-[48px] px-5 text-[15px] js-ask" data-service="Celebration cake">Ask about a celebration cake</a>
-            </div>
-          </div></div>
-        </div>
-
-        <div class="menu-item" data-photo="images/work/golf-cupcakes" data-w="1080" data-h="1440" data-alt="Golf cupcakes with piped grass, flags and golf balls, each in its own dome" data-cap="golf cupcakes, each in a dome">
-          <button class="menu-row" aria-expanded="false" aria-controls="m-cupcakes" id="mb-cupcakes">
-            <img class="h-14 w-14 shrink-0 rounded-full border-[3px] border-cocoa object-cover sm:h-16 sm:w-16" src="images/work/golf-cupcakes-sm.webp" width="640" height="853" alt="" loading="lazy">
-            <span class="min-w-0"><span class="menu-name block">Cupcakes</span><span class="mt-1.5 block text-[14.5px] font-bold text-muted">Boxes to share, or boxed as favours</span></span>
-            <span class="menu-toggle" aria-hidden="true"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="menu-detail" id="m-cupcakes" role="region" aria-labelledby="mb-cupcakes"><div>
-            <div class="pb-7 sm:pl-20">
-              <p class="text-[16.5px] leading-relaxed text-muted">Swirled buttercream cupcakes, finished to match your party or simply pretty. Order a box to share, or have them boxed one by one as party favours.</p>
-              <ul class="bead-list mt-4 grid gap-2 text-[15.5px] font-bold sm:grid-cols-2">
-                <li>Printed edible toppers</li><li>Piped grass, swirls and unicorn horns</li><li>Sprinkles, sugar stars and hearts</li><li>Boxes of four or twelve</li>
-              </ul>
-              <img class="mt-5 aspect-[4/3] w-full rounded-[22px] border-[3px] border-cocoa object-cover lg:hidden" src="images/work/golf-cupcakes-sm.webp" width="640" height="853" alt="Golf cupcakes with piped grass, flags and golf balls" loading="lazy">
-              <a href="#contact" class="btn-berry mt-5 min-h-[48px] px-5 text-[15px] js-ask" data-service="Cupcakes">Ask about cupcakes</a>
-            </div>
-          </div></div>
-        </div>
-
-        <div class="menu-item" data-photo="images/work/photo-cake-70th" data-w="1080" data-h="1440" data-alt="Blue 70th birthday cake with a printed jet picture and sugar clouds" data-cap="a jet, for a 70th">
-          <button class="menu-row" aria-expanded="false" aria-controls="m-photo" id="mb-photo">
-            <img class="h-14 w-14 shrink-0 rounded-full border-[3px] border-cocoa object-cover sm:h-16 sm:w-16" src="images/work/photo-cake-70th-sm.webp" width="640" height="853" alt="" loading="lazy">
-            <span class="min-w-0"><span class="menu-name block">Photo cakes</span><span class="mt-1.5 block text-[14.5px] font-bold text-muted">Your picture, printed on top</span></span>
-            <span class="menu-toggle" aria-hidden="true"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="menu-detail" id="m-photo" role="region" aria-labelledby="mb-photo"><div>
-            <div class="pb-7 sm:pl-20">
-              <p class="text-[16.5px] leading-relaxed text-muted">A favourite photo or picture printed onto an edible topper and set on a smooth iced cake. A simple way to make it personal for a big birthday.</p>
-              <ul class="bead-list mt-4 grid gap-2 text-[15.5px] font-bold sm:grid-cols-2">
-                <li>Your photo, printed edible</li><li>A message on the cake and board</li><li>Iced details to match the picture</li><li>Matching printed cupcakes</li>
-              </ul>
-              <img class="mt-5 aspect-[4/3] w-full rounded-[22px] border-[3px] border-cocoa object-cover lg:hidden" src="images/work/photo-cake-70th-sm.webp" width="640" height="853" alt="Blue 70th birthday cake with a printed jet picture" loading="lazy">
-              <a href="#contact" class="btn-berry mt-5 min-h-[48px] px-5 text-[15px] js-ask" data-service="Photo cake">Ask about a photo cake</a>
-            </div>
-          </div></div>
-        </div>
-
-        <div class="menu-item" data-photo="images/work/traybakes" data-w="1080" data-h="1440" data-alt="A caramel traybake with fudge pieces and a carrot cake traybake topped with sugar carrots" data-cap="carrot cake &amp; caramel traybakes">
-          <button class="menu-row" aria-expanded="false" aria-controls="m-traybakes" id="mb-traybakes">
-            <img class="h-14 w-14 shrink-0 rounded-full border-[3px] border-cocoa object-cover sm:h-16 sm:w-16" src="images/work/traybakes-sm.webp" width="640" height="853" alt="" loading="lazy">
-            <span class="min-w-0"><span class="menu-name block">Traybakes</span><span class="mt-1.5 block text-[14.5px] font-bold text-muted">Cut into squares to share</span></span>
-            <span class="menu-toggle" aria-hidden="true"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-          </button>
-          <div class="menu-detail" id="m-traybakes" role="region" aria-labelledby="mb-traybakes"><div>
-            <div class="pb-7 sm:pl-20">
-              <p class="text-[16.5px] leading-relaxed text-muted">Generous traybakes for parties and gatherings, or for anyone who’d rather have a slice than a showpiece.</p>
-              <ul class="bead-list mt-4 grid gap-2 text-[15.5px] font-bold sm:grid-cols-2">
-                <li>Carrot cake with sugar carrots</li><li>Caramel with fudge pieces</li><li>A full tray, ready to cut</li>
-              </ul>
-              <img class="mt-5 aspect-[4/3] w-full rounded-[22px] border-[3px] border-cocoa object-cover lg:hidden" src="images/work/traybakes-sm.webp" width="640" height="853" alt="Carrot cake and caramel traybakes" loading="lazy">
-              <a href="#contact" class="btn-berry mt-5 min-h-[48px] px-5 text-[15px] js-ask" data-service="Traybake">Ask about traybakes</a>
-            </div>
-          </div></div>
-        </div>
-
-      </div>
+  <div class="wrap">
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <h2 class="reveal h-display">What I make</h2>
+      <p class="reveal lede lg:max-w-[46ch] lg:text-right" style="--d:.06s">Cakes, cupcakes and bakes for birthdays, new arrivals and parties, each one decorated to suit the occasion.</p>
     </div>
 
-    <!-- cake stand + glass dome: shows whichever menu item is open -->
-    <div class="hidden lg:block">
-      <div class="reveal sticky top-28 mx-auto w-full max-w-[470px]" style="--d:.15s">
-        <div class="relative">
-          <div class="stand-photo relative z-10 mx-auto mt-[58px] aspect-square w-[74%] overflow-hidden rounded-full border-[7px] border-cream-50 bg-cream-200 shadow-sticker">
-            <img id="stand-img" class="h-full w-full object-cover" src="images/work/toolbox-4th-birthday-sm.webp" srcset="images/work/toolbox-4th-birthday-sm.webp 640w, images/work/toolbox-4th-birthday.webp 720w" sizes="350px" width="640" height="853" alt="DeWalt toolbox cake with sugar tools, for a fourth birthday" loading="lazy">
-          </div>
-          <!-- dome -->
-          <svg class="pointer-events-none absolute inset-x-0 top-0 z-20 mx-auto w-[92%]" viewBox="0 0 440 420" fill="none" aria-hidden="true">
-            <path d="M28 412V220C28 104 114 28 220 28s192 76 192 192v192" stroke="#3A2414" stroke-width="4" stroke-linecap="round" fill="rgba(255,255,255,.08)"/>
-            <path d="M74 200c4-62 44-112 104-132" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".8"/>
-            <path d="M70 250v40" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".8"/>
-            <circle cx="220" cy="16" r="14" fill="#FFCB45" stroke="#3A2414" stroke-width="4"/>
-          </svg>
-          <!-- stand -->
-          <svg class="relative z-30 -mt-3 block w-full" viewBox="0 0 470 130" aria-hidden="true">
-            <rect x="8" y="6" width="454" height="26" rx="13" fill="#FFD3DE" stroke="#3A2414" stroke-width="4"/>
-            <g fill="#FFF5E6" stroke="#3A2414" stroke-width="3"><circle cx="44" cy="19" r="5"/><circle cx="104" cy="19" r="5"/><circle cx="164" cy="19" r="5"/><circle cx="224" cy="19" r="5"/><circle cx="284" cy="19" r="5"/><circle cx="344" cy="19" r="5"/><circle cx="404" cy="19" r="5"/></g>
-            <path d="M210 32h50l16 62h-82z" fill="#FFCB45" stroke="#3A2414" stroke-width="4" stroke-linejoin="round"/>
-            <rect x="140" y="94" width="190" height="22" rx="11" fill="#FFCB45" stroke="#3A2414" stroke-width="4"/>
-          </svg>
-          <p id="stand-cap" class="note mt-3 text-center text-[24px] -rotate-2">a toolbox for a 4th birthday</p>
+    <div class="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:grid-rows-[auto_auto] lg:gap-6">
+
+      <!-- Celebration cakes (feature card) -->
+      <article class="svc reveal bg-berry-light md:col-span-2 lg:col-span-1 lg:row-span-2">
+        <div class="svc-photo aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/5]">
+          <img src="images/work/toolbox-4th-birthday-sm.webp" srcset="images/work/toolbox-4th-birthday-sm.webp 640w, images/work/toolbox-4th-birthday.webp 720w" sizes="(min-width: 1024px) 380px, (min-width: 768px) 90vw, 92vw" width="640" height="853" alt="DeWalt toolbox cake with sugar tools, for a fourth birthday" loading="lazy">
         </div>
-      </div>
+        <div class="flex flex-1 flex-col p-6 sm:p-7">
+          <h3 class="font-display text-[2rem] leading-none sm:text-[2.3rem]">Celebration cakes</h3>
+          <p class="mt-3 text-[16px] leading-relaxed text-cocoa/80">Themed cakes for birthdays and big occasions, from a toolbox for a fourth birthday to a wheel of cheese for a 60th. Tell me who it’s for and what they love, and I’ll take it from there.</p>
+          <ul class="mt-5 flex flex-wrap gap-2 text-[14px] font-bold"><li class="rounded-full border-2 border-cocoa/80 bg-cream-50/80 px-3 py-1">Hand-modelled figures</li><li class="rounded-full border-2 border-cocoa/80 bg-cream-50/80 px-3 py-1">Names and ages</li><li class="rounded-full border-2 border-cocoa/80 bg-cream-50/80 px-3 py-1">Decorated boards</li><li class="rounded-full border-2 border-cocoa/80 bg-cream-50/80 px-3 py-1">Baby showers</li></ul>
+          <a href="#contact" class="svc-link js-ask mt-auto pt-6" data-service="Celebration cake">Ask about a celebration cake <svg class="h-5 w-5" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Cupcakes (wide card) -->
+      <article class="svc reveal bg-butter-light md:col-span-2 lg:col-span-2 sm:flex-row" style="--d:.06s">
+        <div class="svc-photo aspect-[4/3] sm:aspect-auto sm:w-[44%] sm:shrink-0">
+          <img src="images/work/golf-cupcakes-sm.webp" width="640" height="853" alt="Golf cupcakes with piped grass, flags and golf balls, each in its own dome" loading="lazy">
+        </div>
+        <div class="flex flex-1 flex-col p-6 sm:p-7">
+          <h3 class="font-display text-[2rem] leading-none">Cupcakes</h3>
+          <p class="mt-3 text-[16px] leading-relaxed text-cocoa/80">Swirled buttercream cupcakes, finished to match your party or simply pretty. Order a box to share, or have them boxed one by one as party favours.</p>
+          <ul class="mt-5 flex flex-wrap gap-2 text-[14px] font-bold"><li class="rounded-full border-2 border-cocoa/80 bg-cream-50/80 px-3 py-1">Printed toppers</li><li class="rounded-full border-2 border-cocoa/80 bg-cream-50/80 px-3 py-1">Piped details</li><li class="rounded-full border-2 border-cocoa/80 bg-cream-50/80 px-3 py-1">Boxes of 4 or 12</li><li class="rounded-full border-2 border-cocoa/80 bg-cream-50/80 px-3 py-1">Individually boxed</li></ul>
+          <a href="#contact" class="svc-link js-ask mt-auto pt-6" data-service="Cupcakes">Ask about cupcakes <svg class="h-5 w-5" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Photo cakes -->
+      <article class="svc reveal bg-[#DDF0D4]" style="--d:.1s">
+        <div class="svc-photo aspect-[4/3]">
+          <img src="images/work/photo-cake-70th-sm.webp" width="640" height="853" alt="Blue 70th birthday cake with a printed jet picture and sugar clouds" loading="lazy">
+        </div>
+        <div class="flex flex-1 flex-col p-6">
+          <h3 class="font-display text-[1.8rem] leading-none">Photo cakes</h3>
+          <p class="mt-3 text-[16px] leading-relaxed text-cocoa/80">A favourite picture printed onto an edible topper and set on a smooth iced cake, with your message around it.</p>
+          <a href="#contact" class="svc-link js-ask mt-auto pt-5" data-service="Photo cake">Ask about a photo cake <svg class="h-5 w-5" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Traybakes -->
+      <article class="svc reveal bg-cream-200" style="--d:.14s">
+        <div class="svc-photo aspect-[4/3]">
+          <img src="images/work/traybakes-sm.webp" width="640" height="853" alt="A caramel traybake with fudge pieces and a carrot cake traybake topped with sugar carrots" loading="lazy">
+        </div>
+        <div class="flex flex-1 flex-col p-6">
+          <h3 class="font-display text-[1.8rem] leading-none">Traybakes</h3>
+          <p class="mt-3 text-[16px] leading-relaxed text-cocoa/80">Carrot cake and caramel traybakes, baked in a full tray and ready to cut into squares and share.</p>
+          <a href="#contact" class="svc-link js-ask mt-auto pt-5" data-service="Traybake">Ask about traybakes <svg class="h-5 w-5" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>

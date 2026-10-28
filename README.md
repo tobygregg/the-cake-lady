@@ -29,7 +29,7 @@ _fb-pack/               ← the Facebook research pack (not published, see Sourc
 
 ## Brand
 
-The look is a calm retro cake shop: a pale pink hero with the name set big in Shrikhand, three of her cakes laid out underneath, and outlined "sticker" buttons and cards with a small hard shadow.
+The look is a calm retro cake shop: a pale pink hero with the name set big in Shrikhand, a light scatter of sprinkles and a piped icing edge, three of her cakes laid out underneath, and outlined "sticker" buttons and cards with a small hard shadow.
 
 | Name | Hex | Used for |
 | --- | --- | --- |
@@ -52,7 +52,7 @@ Colours come from her photos: the chocolate boards and ganache, the cream boxes,
 - **Text:** everything is in `index.html`. Search for the section banner (`HERO`, `WHAT I MAKE`, `RECENT CAKES`, `HOW ORDERING WORKS`, `ABOUT`, `GET A QUOTE`).
 - **Colours / fonts:** change them in `tailwind.config.js`, then run `npm run build`.
 - **Hero photos:** the three `<figure>` blocks under the heading. Swap the `<img>` to change a photo; the shape comes from `cut-arch`, `cut-round` or `cut-tile`.
-- **What I make (menu):** each `.menu-item` is one service. Its `data-photo`, `data-w`, `data-h`, `data-alt` and `data-cap` set what appears under the glass dome on the cake stand (desktop). The "Ask about…" button's `data-service` must match an `<option>` in the form.
+- **What I make:** four coloured `<article class="svc">` cards in a mixed grid (Celebration cakes is the tall feature card on desktop). Swap the `<img>` to change a photo. The "Ask about…" link's `data-service` must match an `<option>` in the form.
 - **Recent cakes (polaroid stack):** each `<figure class="card">` is one photo. Set `data-full` to the large image, the `<img>` to the `-sm` version, and the caption in `<figcaption>`. Update the "/ 10" count if you add or remove one.
 - **Adding a work photo:** export `images/work/my-cake.webp` (up to ~1600px) and `images/work/my-cake-sm.webp` (640px), then add a card as above.
 - **Before & after:** not used. This isn't a before/after trade.

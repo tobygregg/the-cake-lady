@@ -1,6 +1,6 @@
 /* ============================================================
    The Cake Lady Guernsey — site behaviour
-   Sections: header · mobile menu · reveals · menu + cake stand · polaroid deck
+   Sections: header · mobile menu · reveals · ask buttons · polaroid deck
              lightbox · quote form · mobile call bar
    ============================================================ */
 (() => {
@@ -55,44 +55,6 @@
   }
 
   const hero = $('#top');
-
-  /* ---------- Menu: one item open at a time, shown on the cake stand ---------- */
-  const items = $$('.menu-item');
-  const standWrap = $('.stand-photo');
-  const standImg = $('#stand-img');
-  const standCap = $('#stand-cap');
-  const showOnStand = (item) => {
-    if (!standImg) return;
-    const base = item.dataset.photo;
-    standWrap.classList.add('is-swapping');
-    setTimeout(() => {
-      standImg.src = `${base}-sm.webp`;
-      standImg.srcset = `${base}-sm.webp 640w, ${base}.webp ${item.dataset.w}w`;
-      standImg.height = Math.round(640 * item.dataset.h / item.dataset.w);
-      standImg.alt = item.dataset.alt;
-      standCap.innerHTML = item.dataset.cap;
-      standWrap.classList.remove('is-swapping');
-    }, reduceMotion ? 0 : 260);
-  };
-  items.forEach((item) => {
-    const btn = $('.menu-row', item);
-    btn.addEventListener('click', () => {
-      const opening = !item.classList.contains('is-open');
-      items.forEach((it) => {
-        const on = it === item && opening;
-        it.classList.toggle('is-open', on);
-        $('.menu-row', it).setAttribute('aria-expanded', String(on));
-      });
-      if (opening) showOnStand(item);
-    });
-    // desktop: hovering a closed item previews it on the stand
-    if (finePointer) btn.addEventListener('mouseenter', () => { if (window.innerWidth >= 1024) showOnStand(item); });
-  });
-  const menu = $('#menu');
-  if (menu && finePointer) menu.addEventListener('mouseleave', () => {
-    const open = items.find((it) => it.classList.contains('is-open'));
-    if (open && window.innerWidth >= 1024) showOnStand(open);
-  });
 
   // "Ask about…" buttons pre-select the form's service
   const serviceSelect = $('#f-service');

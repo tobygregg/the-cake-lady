@@ -65,16 +65,30 @@
   .cut-tile .cut-frame { border-radius: 30px; }
 
 
-  /* ---------- Menu (services) ---------- */
-  .menu-item { @apply relative border-b-[3px] border-dashed border-cocoa/20; }
-  .menu-row { @apply flex w-full items-center gap-4 py-5 text-left sm:py-6; }
-  .menu-name { @apply font-display text-[1.9rem] leading-none text-cocoa transition-colors sm:text-[2.5rem]; }
-  .menu-item.is-open .menu-name { @apply text-berry-dark; }
-  .menu-toggle { @apply ml-auto grid h-11 w-11 shrink-0 place-items-center rounded-full border-[3px] border-cocoa bg-cream-50 transition-[transform,background-color] duration-300; }
-  .menu-item.is-open .menu-toggle { @apply rotate-45 bg-butter; }
-  .menu-detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.2,.8,.2,1); }
-  .menu-item.is-open .menu-detail { grid-template-rows: 1fr; }
-  .menu-detail > div { overflow: hidden; }
+  /* ---------- Service cards (what I make) ---------- */
+  .svc { @apply relative flex flex-col overflow-hidden rounded-[26px] border-[3px] border-cocoa shadow-[6px_7px_0_#3A2414] transition-transform duration-300; }
+  .svc:hover { transform: translateY(-4px) rotate(-.4deg); }
+  .svc-photo { @apply relative overflow-hidden border-b-[3px] border-cocoa bg-cream-200; }
+  .svc.sm\:flex-row .svc-photo { @apply sm:border-b-0 sm:border-r-[3px]; }
+  .svc-photo img { @apply absolute inset-0 h-full w-full object-cover; transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+  .svc:hover .svc-photo img { transform: scale(1.05); }
+  .svc-link { @apply inline-flex min-h-[44px] items-center gap-2 self-start text-[16px] font-extrabold text-cocoa underline decoration-berry decoration-[3px] underline-offset-[6px] transition-[gap] hover:gap-3; }
+
+  /* ---------- Hero texture: a few scattered sprinkles (static) ---------- */
+  .hero-sprinkles {
+    opacity: .5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg stroke-linecap='round' stroke-width='6' fill='none'%3E%3Cpath d='M30 40l12-6' stroke='%23EE7A98'/%3E%3Cpath d='M150 24l3 13' stroke='%23FFCB45'/%3E%3Cpath d='M214 96l13 4' stroke='%239FD08A'/%3E%3Cpath d='M70 150l-10 9' stroke='%23FFCB45'/%3E%3Cpath d='M176 190l12 7' stroke='%23EE7A98'/%3E%3Cpath d='M40 226l3 12' stroke='%239FD08A'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 260px 260px;
+    -webkit-mask-image: radial-gradient(ellipse at center, transparent 30%, #000 75%);
+    mask-image: radial-gradient(ellipse at center, transparent 30%, #000 75%);
+  }
+  .hero-row figure { transition: transform .4s cubic-bezier(.3,1.4,.5,1); }
+  .hero-row figure:hover { transform: translateY(-8px) rotate(-3deg); z-index: 30; }
+
+  /* piped icing edge at the bottom of the hero */
+  .frosting {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='34' viewBox='0 0 72 34'%3E%3Cpath d='M0 18C18 2 54 2 72 18V34H0Z' fill='%23FFF5E6'/%3E%3Cpath d='M0 18C18 2 54 2 72 18' fill='none' stroke='%233A2414' stroke-width='3'/%3E%3C/svg%3E") repeat-x bottom / 72px 34px;
+  }
 
   .bead-list li { @apply relative pl-7; }
   .bead-list li::before { content: ''; @apply absolute left-0 top-[.38em] h-3.5 w-3.5 rounded-full border-[2.5px] border-cocoa bg-berry-light; }
@@ -123,9 +137,7 @@
 .no-js .reveal, .no-js .pop { opacity: 1; transform: none; }
 
 /* ---------- Hero ---------- */
-.hero-letter { display: inline-block; transform-origin: 50% 90%; animation: letterIn .8s cubic-bezier(.3,1.7,.5,1) both; animation-delay: calc(.2s + var(--i) * .055s); }
-.hero-letter:hover { animation: wobble .6s ease; }
-.cut-pop { animation: cutIn .9s cubic-bezier(.3,1.5,.5,1) both; animation-delay: var(--d, .3s); }
+.cut-pop { animation: cutIn .8s cubic-bezier(.3,1.4,.5,1) both; animation-delay: var(--d, .2s); }
 
 /* ---------- Icing drip edge ---------- */
 .drip-edge { @apply pointer-events-none absolute inset-x-0 block w-full; }
@@ -148,13 +160,8 @@
 #lightbox.is-open { visibility: visible; opacity: 1; transition: opacity .25s ease; }
 #lb-img { transition: opacity .2s ease; }
 
-/* ---------- Cake stand photo swap ---------- */
-.stand-photo img { transition: opacity .3s ease, transform .6s cubic-bezier(.3,1.4,.5,1); }
-.stand-photo.is-swapping img { opacity: 0; transform: scale(.85) rotate(-12deg); }
 
-@keyframes letterIn { 0% { opacity: 0; transform: translateY(-60px) scale(.6) rotate(-14deg); } 60% { opacity: 1; } 100% { opacity: 1; transform: none; } }
-@keyframes wobble { 0%, 100% { transform: none; } 30% { transform: rotate(-8deg) scale(1.08); } 60% { transform: rotate(5deg); } }
-@keyframes cutIn { 0% { opacity: 0; transform: scale(.4) rotate(-20deg); } 100% { opacity: 1; transform: none; } }
+@keyframes cutIn { 0% { opacity: 0; transform: translateY(30px) scale(.9); } 100% { opacity: 1; transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
